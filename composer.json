@@ -1,0 +1,25 @@
+{
+    "name": "bag2/container",
+    "description": "Library for meta programming.",
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=7.3",
+        "psr/container": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bag2\\Container\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bag2\\Container\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
