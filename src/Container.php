@@ -6,6 +6,7 @@ namespace Bag2\Container;
 
 use function array_key_exists;
 use Bag2\Container\Exception\NotFoundException;
+use Bag2\Container\Fetcher\FetcherInterface;
 use Psr\Container\ContainerInterface;
 
 final class Container implements ContainerInterface
@@ -28,7 +29,11 @@ final class Container implements ContainerInterface
     public function get($id)
     {
         if (array_key_exists($id, $this->data)) {
-            return $this->data[$id];
+            $data = $this->data[$id];
+
+            return $data instanceof FetcherInterface
+                ? $data->fetch($this)
+                : $data;
         }
 
         throw new NotFoundException("Entry '{$id}' not found.");
